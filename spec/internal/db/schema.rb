@@ -21,6 +21,8 @@ ActiveRecord::Schema.define version: 0 do
     # length for MyISAM table type: http://bit.ly/vgW2Ql
     t.string :context, limit: 128
 
+    t.string :tenant , limit: 128
+
     t.datetime :created_at
   end
   add_index 'taggings',
@@ -34,6 +36,7 @@ ActiveRecord::Schema.define version: 0 do
   create_table :taggable_models, force: true do |t|
     t.column :name, :string
     t.column :type, :string
+    t.column :tenant_id, :integer
   end
 
   create_table :non_standard_id_taggable_models, primary_key: 'an_id', force: true do |t|
